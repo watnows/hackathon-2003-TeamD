@@ -20,7 +20,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={zenkakugothicnew.className}>
+      <body className={`${zenkakugothicnew.className} bg-background`}>
         <Header />
         {children}
       </body>
