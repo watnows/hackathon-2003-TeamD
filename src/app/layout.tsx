@@ -22,7 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${zenkakugothicnew.className} bg-background`}>
         <Header />
-        {children}
+        <main className='min-h-screen max-w-[60%] m-auto p-12"'>
+          {children}
+        </main>
       </body>
     </html>
   )
