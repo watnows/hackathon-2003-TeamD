@@ -1,13 +1,13 @@
 "use client"
 import React,{ useState } from 'react'
 
-type SampleButtonProps = {
-  name: string;
-  isSelected: boolean;
-  onClick: (name:string) => void;
-};
-
-function RandomColorButton() {
+interface iRandomColorButton {
+  name: string,
+  color: string,
+  onClick: React.MouseEventHandler<HTMLButtonElement>
+}
+function RandomColorButton(props:iRandomColorButton) {
+  const {name, color, onClick} = props
   const colors = ['#FF5733', '#33FF57', '#5733FF', '#FFFF33', '#FF33FF', '#33FFFF'];
 
   const initialBackgroundColor = '#f5f5f5';
@@ -32,13 +32,19 @@ function RandomColorButton() {
   };
 
   return (
-    <button 
-      onClick={toggleColors}
-      className={`px-4 py-2`} 
-      style={{ backgroundColor: backgroundColor, color: fontColor }}
-    >
-      クリックして色を変更
-    </button>
+    <>
+    <div>
+      <div>name:{name}</div>
+      <div>color:{color}</div>
+    </div>
+      <button 
+        onClick={toggleColors}
+        className={`px-4 py-2`} 
+        style={{ backgroundColor: backgroundColor, color: fontColor }}
+      >
+        クリックして色を変更
+      </button>
+    </>
   );
 }
 
