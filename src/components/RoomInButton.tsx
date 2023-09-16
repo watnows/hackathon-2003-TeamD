@@ -11,7 +11,7 @@ const RoomInButton = () => {
         console.log(roomId);
     }
     return (
-        <div className="bg-background text-font text-lg text-3xl p-8 py-10 w-fit rounded-3xl shadow shadow-boxOut">
+        <div className="bg-background text-font text-lg text-3xl m-auto mt-12 mb-24 p-8 py-10 w-fit rounded-3xl shadow shadow-boxOut">
             <h2 className="mx-2">ルームID入力</h2>
             <form action={() => onSubmit} className="flex h-10">
                 <input type="text" className="bg-background rounded-tl-2xl rounded-bl-2xl shadow shadow-boxIn" />
