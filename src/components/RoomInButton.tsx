@@ -1,8 +1,24 @@
+'use client'
+import Image from "next/image";
+
 const RoomInButton = () => {
-    return(
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+            roomId: { value: string };
+        };
+        const roomId = target.roomId.value;
+        console.log(roomId);
+    }
+    return (
         <div className="bg-background text-font text-lg text-3xl p-8 py-10 w-fit rounded-3xl shadow shadow-boxOut">
-            <h2>ルームID入力</h2>
-            <input type="text" className="bg-background rounded-tl-2xl rounded-bl-2xl shadow shadow-boxIn" />
+            <h2 className="mx-2">ルームID入力</h2>
+            <form action={() => onSubmit} className="flex h-10">
+                <input type="text" className="bg-background rounded-tl-2xl rounded-bl-2xl shadow shadow-boxIn" />
+                <button className="w-12 ground rounded-tr-2xl rounded-br-2xl shadow shadow-boxOut">
+                    <Image src={"/submit_triangle.svg"} alt="フォーム入力用の画像" width={32} height={32} className="m-auto" />
+                </button>
+            </form>
         </div>
     )
 }
