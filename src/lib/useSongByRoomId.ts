@@ -2,7 +2,7 @@ import { gql, ApolloClient, InMemoryCache, useSuspenseQuery } from "@apollo/clie
 
 interface Song {
     songName: string;
-    category: string[];
+    categories: string[];
   }
 
 const GET_SONG_BY_ROOM_ID = gql`
@@ -18,6 +18,7 @@ const useSongByRoomId = (roomId: number) => {
   const { data } = useSuspenseQuery<{ song: Song[] }>(GET_SONG_BY_ROOM_ID, {
     variables: { roomId }
   });
+  console.log(data.song);
 
   return data?.song;
 };
