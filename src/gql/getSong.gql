@@ -1,0 +1,20 @@
+query Song($songName: String!) {
+	song(keyword: $songName) {
+		songName
+		category
+	}
+}
+
+mutation JoinRoom($userId: Int!, $roomId: Int!) {
+	joinRoom(join: {userId: $userId, roomId: $roomId}) {
+		userId
+		roomId
+	}
+}
+mutation createRoom($userId: Int!, $roomName: String!) {
+  createRoom(room: { userId: $userId, roomName: $roomName }) {
+    roomId
+    userId
+    name
+  }
+}
