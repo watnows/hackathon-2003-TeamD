@@ -7,3 +7,5 @@ const useGraphQL = () => {
         useJoinRoomMutation
     }
 }
+
+export default useGraphQL
