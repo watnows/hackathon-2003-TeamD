@@ -8,13 +8,13 @@ function ModalWrap() {
   const genreList = [
     "ダンス",
     "jpop",
+    "pop",
+    "op",
     "kpop",
-    "kpop",
-    "kpop",
-    "kpop",
-    "kpop",
-    "kpop",
-    "kpop",
+    "kop",
+    "kpp",
+    "ppap",
+    "kp",
     "kpop",
     "kpop",
     "kpop",
@@ -29,6 +29,7 @@ function ModalWrap() {
       const isAlreadySelected = prevGenres.includes(genreName);
 
       if (isAlreadySelected) {
+
         return prevGenres.filter((genre) => genre !== genreName);
       } else {
         return [...prevGenres, genreName];
@@ -38,23 +39,15 @@ function ModalWrap() {
 
   //初期色の設定をこっちでやって、RandomColorButtonにpropsで当てる
 
-  // ランダムな初期値を一つ決めて返す
-  // const getColor: () => string = () => {
-  //   const colors = [
-  //     "#6835FF",
-  //     "#496AE8",
-  //     "#FF60A8",
-  //     "#07BFBC",
-  //   ];
-  //   // return colors[Math.floor(Math.random() * colors.length)];
-  // };
     const colors = [
       "#6835FF",
       "#496AE8",
       "#FF60A8",
       "#07BFBC",
     ];
-
+    useEffect(() => {
+      console.log(selectedGenres)
+    },[selectedGenres]);
   return (
     <div className='flex flex-wrap '>
       {genreList.map((genre, i) => {
@@ -63,17 +56,17 @@ function ModalWrap() {
             key={i}
             name={genre}
             color={colors[(i%4)]}
-            onClick={() => {}}
+            onClick={() => handleGenreClick(genre)}
           />
         );
       })}
       <div className=''>
-        {/* <h3>Selected Genres:</h3> */}
+        {/* <h3>Selected Genres:</h3>
         <ul>
           {selectedGenres.map((genre, index) => (
             <li key={index}>{genre}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
