@@ -1,12 +1,28 @@
+'use client'
 import LongButton from "@/components/LongButton";
 import NeumourList from "@/components/NeumorList";
 import ShowRoomID from "@/components/ShowRoomID";
+import { useSearchParams } from "next/navigation";
 
 const Page = () => {
-    const userList = ["john", "jane", "james", "judy", "jake", "jill", "josh", "jessica", "jackson", "jennifer", "jordan", "julie", "jim", "julian", "juliet", "joseph", "jose", "julio", "juliana", "julius", "juliette", "julianne", "ju"]
+    const searchParams = useSearchParams();
+  
+    // クエリパラメータを取得
+    const roomID = searchParams.get("roomID");
+    const userID = searchParams.get("userID");
+
+    // クエリがまだ利用できない場合のハンドリング
+    if (!roomID || !userID) {
+        return <div>Loading...</div>;
+    }
+    if(typeof roomID !== "string" || typeof userID !== "string") {
+        return <p>ルームIDまたはユーザーIDが不正です。</p>
+    }
+
+    const userList = ["john", "jane", "james", "judy", "jake"]
     return (
         <>
-            <ShowRoomID roomID="12345"/>
+            <ShowRoomID roomID={roomID}/>
             <NeumourList listItems={userList} />
             <LongButton text="ルーム決定" />
         </>
