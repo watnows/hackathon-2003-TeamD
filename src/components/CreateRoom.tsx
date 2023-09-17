@@ -50,7 +50,6 @@ const CreateRoom = () => {
         } catch (err) {
             console.error(err);
         }
-
     }
     return (
         <a href="/target-page" onClick={(e) => handleClick(e, '/target-page')}>
