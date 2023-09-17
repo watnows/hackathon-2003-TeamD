@@ -25,21 +25,28 @@ function RandomColorButton(props:iRandomColorButton) {
 
   return (
     <>
-      <div>
-        <div>name:{name}</div>
-        <div>color:{color}</div>
+      <div className='py-2 px-2'>
+        {/* <div>
+          <div>name:{name}</div>
+          <div>color:{color}</div>
+        </div> */}
+        <button 
+          onClick={toggleColors}
+          className={`px-3 py-1 flex flex-nowrap items-center text-lg`} 
+          style={{ 
+            backgroundColor: isClicked ? color : initialBackgroundColor,
+            color: isClicked ? initialBackgroundColor : color,
+            borderRadius: '16px' }}
+          >
+          {name}
+          {isClicked 
+            ? <Image src={done} alt="Done Icon" /> 
+            : <Image 
+            className='origin-center rotate-45 w-5' 
+            src={close} 
+            alt="Close Icon" />}
+        </button>
       </div>
-      <button 
-        onClick={toggleColors}
-        className={`px-4 py-2 ground flex items-center `} 
-        style={{ 
-          backgroundColor: isClicked ? color : initialBackgroundColor,
-          color: isClicked ? initialBackgroundColor : color,
-          borderRadius: '16px' }}
-        >
-        {isClicked ? <Image src={done} alt="Done Icon" /> : <Image className='origin-center rotate-45' src={close} alt="Close Icon" />}
-        クリックして色を変更
-      </button>
     </>
   );
 }

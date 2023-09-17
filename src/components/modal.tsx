@@ -9,6 +9,18 @@ function ModalWrap() {
     "ダンス",
     "jpop",
     "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
+    "kpop",
   ];
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
@@ -44,7 +56,7 @@ function ModalWrap() {
     ];
 
   return (
-    <div>
+    <div className='flex flex-wrap '>
       {genreList.map((genre, i) => {
         return (
           <RandomColorButton
@@ -55,8 +67,8 @@ function ModalWrap() {
           />
         );
       })}
-      <div>
-        <h3>Selected Genres:</h3>
+      <div className=''>
+        {/* <h3>Selected Genres:</h3> */}
         <ul>
           {selectedGenres.map((genre, index) => (
             <li key={index}>{genre}</li>
