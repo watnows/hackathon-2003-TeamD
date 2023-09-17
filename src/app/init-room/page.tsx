@@ -19,7 +19,8 @@ const Page = () => {
         return <p>ルームIDまたはユーザーIDが不正です。</p>
     }
 
-    const userList = ["john", "jane", "james", "judy", "jake"]
+    const userList = ["入室できました！"]
+    // const userList = ["john", "jane", "james", "judy", "jake"]
     return (
         <>
             <ShowRoomID roomID={roomID}/>
