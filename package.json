@@ -11,6 +11,8 @@
     "build-storybook": "storybook build -s public"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.0-rc.2",
+    "@apollo/experimental-nextjs-app-support": "^0.4.2",
     "@storybook/addon-postcss": "^2.0.0",
     "@types/node": "20.6.1",
     "@types/react": "18.2.21",
