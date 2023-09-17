@@ -2,11 +2,14 @@
 //モーダルを作るコンポーネント
 import React from "react";
 import { useState, useEffect } from "react";
-import SampleButton from "./Genrebutton";
 import RandomColorButton from "./Genrebutton";
 
-function Modal() {
-  const genreList = ["jpop", "kpop"];
+function ModalWrap() {
+  const genreList = [
+    "ダンス",
+    "jpop",
+    "kpop",
+  ];
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   const handleGenreClick = (genreName: string) => {
@@ -23,32 +26,22 @@ function Modal() {
 
   //初期色の設定をこっちでやって、RandomColorButtonにpropsで当てる
 
-  // function RandColor() {
-
-  //   const [selectedColorClass, setSelectedColorClass] = useState('');
-
-  // useEffect(() => {
-  //   const randomIndex = Math.floor(Math.random() * colors.length);
-  //   setSelectedColorClass(colors[randomIndex]);
-  // }, []);
-  // return  (
-  //   <RandomColorButton colorClass={selectedColorClass} />
-  //   );
-  // }
-
-
-  //ランダムな初期値を一つ決めて返す
-  const getColor: () => string = () => {
+  // ランダムな初期値を一つ決めて返す
+  // const getColor: () => string = () => {
+  //   const colors = [
+  //     "#6835FF",
+  //     "#496AE8",
+  //     "#FF60A8",
+  //     "#07BFBC",
+  //   ];
+  //   // return colors[Math.floor(Math.random() * colors.length)];
+  // };
     const colors = [
-      "#FF5733",
-      "#33FF57",
-      "#5733FF",
-      "#FFFF33",
-      "#FF33FF",
-      "#33FFFF",
+      "#6835FF",
+      "#496AE8",
+      "#FF60A8",
+      "#07BFBC",
     ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
 
   return (
     <div>
@@ -57,7 +50,7 @@ function Modal() {
           <RandomColorButton
             key={i}
             name={genre}
-            color={getColor()}
+            color={colors[(i%4)]}
             onClick={() => {}}
           />
         );
@@ -74,6 +67,6 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default ModalWrap;
 
 //モーダルの中でuseStateの配列使いながら選択したジャンル持ってたら大丈夫

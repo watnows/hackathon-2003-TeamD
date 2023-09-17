@@ -12,29 +12,16 @@ interface iRandomColorButton {
 
 function RandomColorButton(props:iRandomColorButton) {
   const {name, color, onClick} = props
-  const colors = ['#FF5733', '#33FF57', '#5733FF', '#FFFF33', '#FF33FF', '#33FFFF'];
 
   const initialBackgroundColor = '#f5f5f5';
-  const initialFontColor = colors[Math.floor(Math.random() * colors.length)];
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const [backgroundColor, setBackgroundColor] = useState(initialBackgroundColor);
-  const [fontColor, setFontColor] = useState(initialFontColor);
-  const [isClicked, setIsClicked] = useState(false);
-
-  const toggleColors = () => {
-    console.log('hoge')
-    if (isClicked) {
-      // 初期状態に戻す
-      setBackgroundColor(initialBackgroundColor);
-      setFontColor(initialFontColor);
-    } else {
-      // クリックされた状態にする
-      setBackgroundColor(fontColor);
-      setFontColor(initialBackgroundColor);
-    }
+  const toggleColors = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setIsClicked(!isClicked);
-    onClick && onClick(); //propsから渡されたonClickを呼ぶ
+    onClick && onClick(event); //propsから渡されたonClickを呼ぶ
+    //配列に名前を加えるようにする
   };
+  // サーバー側とクライアント側で選ばれる色が違う
 
   return (
     <>
@@ -44,10 +31,13 @@ function RandomColorButton(props:iRandomColorButton) {
       </div>
       <button 
         onClick={toggleColors}
-        className={`px-4 py-2 flex items-center`} 
-        style={{ backgroundColor: backgroundColor, color: fontColor }}
+        className={`px-4 py-2 ground flex items-center `} 
+        style={{ 
+          backgroundColor: isClicked ? color : initialBackgroundColor,
+          color: isClicked ? initialBackgroundColor : color,
+          borderRadius: '16px' }}
         >
-        {isClicked ? <Image src={done} alt="Done Icon" /> : <Image src={close} alt="Close Icon" />}
+        {isClicked ? <Image src={done} alt="Done Icon" /> : <Image className='origin-center rotate-45' src={close} alt="Close Icon" />}
         クリックして色を変更
       </button>
     </>
