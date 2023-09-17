@@ -25,7 +25,7 @@ const Page = () => {
         <>
             <ShowRoomID roomID={roomID}/>
             <NeumourList listItems={userList} />
-            <LongButton text="ルーム決定" />
+            <LongButton text="曲を探す" />
         </>
     );
 }
