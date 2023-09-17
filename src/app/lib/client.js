@@ -9,7 +9,7 @@ export const { getClient } = registerApolloClient(() => {
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
         link: new HttpLink({
-            uri: "https://main--time-pav6zq.apollographos.net/graphqlhttps://mood-hub.onrender.com/",
+            uri: "https://mood-hub.onrender.com/graphql",
         }),
     });
 });
