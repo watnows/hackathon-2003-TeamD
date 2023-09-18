@@ -28,8 +28,7 @@ interface SuspendedSongListProps {
   roomId?: number;
 }
 
-const SuspendedSongList: React.FC<SuspendedSongListProps> = ({
-  roomId }) => {
+const Page: React.FC<SuspendedSongListProps> = ({ roomId }) => {
   const searchParams = useSearchParams();
 
   // クエリパラメータを取得
@@ -55,4 +54,4 @@ const SuspendedSongList: React.FC<SuspendedSongListProps> = ({
   );
 };
 
-export default SuspendedSongList;
+export default Page;
