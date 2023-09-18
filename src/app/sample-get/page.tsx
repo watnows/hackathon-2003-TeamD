@@ -31,7 +31,7 @@ interface SuspendedSongListProps {
   roomId?: number;
 }
 
-const SuspendedSongList: React.FC<SuspendedSongListProps> = ({ roomId }) => {
+const Sample: React.FC<SuspendedSongListProps> = ({ roomId }) => {
   if (!roomId) {
     return (
       <Suspense fallback={<div>Loading...</div>}>
@@ -45,4 +45,4 @@ const SuspendedSongList: React.FC<SuspendedSongListProps> = ({ roomId }) => {
   );
 };
 
-export default SuspendedSongList;
+export default Sample;
