@@ -24,11 +24,8 @@ const SongList: React.FC<SongListProps> = ({ roomId, userID }) => {
   );
 };
 
-interface SuspendedSongListProps {
-  roomId?: number;
-}
 
-const Page: React.FC<SuspendedSongListProps> = ({ roomId }) => {
+const Page = () => {
   const searchParams = useSearchParams();
 
   // クエリパラメータを取得
@@ -41,7 +38,7 @@ const Page: React.FC<SuspendedSongListProps> = ({ roomId }) => {
   if (typeof roomID !== "string" || typeof userID !== "string") {
     return <p>ルームIDまたはユーザーIDが不正です。</p>
   }
-  if (!roomId) {
+  if (!roomID) {
     return (
       <Suspense fallback={<div>Loading...</div>}>
         <SongList roomId={Number(roomID)} userID={Number(userID)} />
