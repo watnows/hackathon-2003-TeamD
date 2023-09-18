@@ -24,7 +24,7 @@ const Page = () => {
     // const userList = ["john", "jane", "james", "judy", "jake"]
     return (
         <>
-            <ModalWhole default={true}  />
+            <ModalWhole default={false} userId={Number(userID)}  />
             <ShowRoomID roomID={roomID} />
             <NeumourList listItems={userList} />
             <LongButton text="曲を探す" />

@@ -11,7 +11,7 @@ const Music = () => {
   const [modalIsOpen, setIsOpen] = React.useState(true);
   return (
     <>
-      <ModalWhole/>
+      {/* <ModalWhole/> */}
       <ShowRoomID roomID="12245" />
       <NeumourList listItems={userList} />
     </>

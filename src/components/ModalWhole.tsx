@@ -4,6 +4,8 @@ import Modal from "react-modal";
 import ModalWrap from "./modal";
 import ModalButton from "./ModalButton";
 import Image from 'next/image';
+import { getFromLocalStorage } from "@/functions/crudLoculStrage";
+import { gql, useMutation } from "@apollo/client";
 
 const ModalCss = {
   overlay: {
@@ -21,22 +23,63 @@ const ModalCss = {
 
 interface Props {
   default?: boolean;
+  userId: number;
 }
 
+const REGISTER_MUTATION = gql`
+  mutation Register($regist: Register!) {
+    register(regist: $regist) {
+      userId
+      categories
+    }
+  }
+`;
+
 const ModalWhole = (props: Props) => {
+  const { userId } = props;
   const [modalIsOpen, setIsOpen] = React.useState(props.default ? true : false);
+  const [registerMutation] = useMutation(REGISTER_MUTATION);
+
+
+  const handleDone = async () => {
+    console.log("done")
+    // setIsOpen(false)
+    const genreList = getFromLocalStorage("genre")
+    const eraList = getFromLocalStorage("era")
+    const notNullgenreList = genreList ? genreList : []
+    const notNulleraList = eraList ? eraList : []
+    const categories = [...notNullgenreList, ...notNulleraList]
+    try {
+      if (categories.length === 0) {
+        throw new Error("No categories selected");
+      }
+      const { data } = await registerMutation({
+        variables: {
+          regist: {
+            userId: userId,
+            categories: categories,
+          },
+        },
+      });
+
+      console.log('Joined room with data:', data);
+    } catch (error) {
+      console.error('Error joining room:', error);
+    }
+
+  }
 
   return (
     <div className="relative">
       <button onClick={() => setIsOpen(true)}>
-      <Image 
-        src="/filter.svg" 
-        width={500} 
-        height={500} 
-        alt="Description"
-        className="ml-80 w-10 mt-5" />
+        <Image
+          src="/filter.svg"
+          width={500}
+          height={500}
+          alt="Description"
+          className="ml-80 w-10 mt-5" />
       </button>
-      <Modal isOpen={modalIsOpen} style={ModalCss}>
+      <Modal isOpen={modalIsOpen} style={ModalCss} ariaHideApp={false}>
         <div className="text-3xl flex justify-center py-10">ジャンルを選択</div>
         <div className="">
           <ModalWrap type="genre" />
@@ -53,7 +96,7 @@ const ModalWhole = (props: Props) => {
           <div>
             <ModalButton name="Back" onClick={() => setIsOpen(false)} />
           </div>
-          <div>
+          <div onClick={handleDone}>
             <ModalButton name="Done" onClick={() => setIsOpen(false)} />
           </div>
         </div>

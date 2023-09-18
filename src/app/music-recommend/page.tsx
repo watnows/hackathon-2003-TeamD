@@ -8,15 +8,16 @@ import { useSearchParams } from "next/navigation";
 
 interface SongListProps {
   roomId: number;
+  userID: number;
 }
 
-const SongList: React.FC<SongListProps> = ({ roomId }) => {
+const SongList: React.FC<SongListProps> = ({ roomId, userID }) => {
   const songs = useSongByRoomId(roomId);
   const songNames = songs ? songs.map(song => song.songName) : [];
 
   return (
     <>
-      <ModalWhole />
+      <ModalWhole userId={userID} />
       <ShowRoomID roomID={String(roomId)} />
       <NeumourList listItems={songNames} />
     </>
@@ -44,12 +45,12 @@ const SuspendedSongList: React.FC<SuspendedSongListProps> = ({
   if (!roomId) {
     return (
       <Suspense fallback={<div>Loading...</div>}>
-        <SongList roomId={5711} />
+        <SongList roomId={Number(roomID)} userID={Number(userID)} />
       </Suspense>)
   }
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <SongList roomId={Number(roomID)} />
+      <SongList roomId={Number(roomID)} userID={Number(userID)} />
     </Suspense>
   );
 };
