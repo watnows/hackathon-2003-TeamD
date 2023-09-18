@@ -3,6 +3,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import RandomColorButton from "./Genrebutton";
+import { addToLocalStorage } from "@/functions/crudLoculStrage";
 
 interface Props {
   type: "genre" | "era"
@@ -42,7 +43,8 @@ function ModalWrap(props: Props) {
   ];
   useEffect(() => {
     console.log(selectedGenres)
-  }, [selectedGenres]);
+    addToLocalStorage(type, selectedGenres)
+  }, [selectedGenres, type]);
   return (
     <div className='flex flex-wrap '>
       {
