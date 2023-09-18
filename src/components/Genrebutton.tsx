@@ -26,10 +26,6 @@ function RandomColorButton(props:iRandomColorButton) {
   return (
     <>
       <div className='py-2 px-2'>
-        {/* <div>
-          <div>name:{name}</div>
-          <div>color:{color}</div>
-        </div> */}
         <button 
           onClick={toggleColors}
           className={`px-3 py-1 flex flex-nowrap items-center text-lg`} 
