@@ -39,11 +39,11 @@ const ModalWhole = (props: Props) => {
       <Modal isOpen={modalIsOpen} style={ModalCss}>
         <div className="text-3xl flex justify-center py-10">ジャンルを選択</div>
         <div className="">
-          <ModalWrap />
+          <ModalWrap type="genre" />
         </div>
         <div className="text-3xl flex justify-center py-10">年代を選択</div>
         <div className="">
-          <ModalWrap />
+          <ModalWrap type="era" />
         </div>
         {/* ここからフッターがわり */}
         <div
