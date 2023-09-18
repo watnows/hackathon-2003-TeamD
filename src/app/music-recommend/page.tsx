@@ -28,7 +28,7 @@ interface SuspendedSongListProps {
   roomId?: number;
 }
 
-const SuspendedSongList: React.FC<SuspendedSongListProps> = ({
+const Page: React.FC<SuspendedSongListProps> = ({
   roomId }) => {
   const searchParams = useSearchParams();
 
@@ -55,4 +55,4 @@ const SuspendedSongList: React.FC<SuspendedSongListProps> = ({
   );
 };
 
-export default SuspendedSongList;
+export default Page;
